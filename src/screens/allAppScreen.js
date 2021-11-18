@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 const AllAppScreen = () => {
