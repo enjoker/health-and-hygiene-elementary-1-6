@@ -93,6 +93,7 @@ const Navigator = () => {
         dispatch(userActions.getUser());
         // await AsyncStorage.removeItem('user')
         // await AsyncStorage.removeItem('privilege')
+        // await AsyncStorage.removeItem('adsTime')
       } catch (error) {
         console.log(error);
       }
