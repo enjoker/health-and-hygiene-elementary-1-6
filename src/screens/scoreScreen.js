@@ -8,6 +8,7 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
+  Alert
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -120,6 +121,16 @@ const scoreScreen = ({ navigation, route }) => {
   useEffect(() => {
     if (adLoadError) {
       console.error(adLoadError);
+      Alert.alert(
+        "แจ้งเตือน",
+        "ไม่สามารถโหลดโฆษณาได้ในขณะนี้",
+        [
+          {
+            text: "ตกลง",
+            onPress: () => setprivilegeVisible(false),
+          },
+        ]
+      )
     }
   }, [adLoadError]);
 
@@ -399,7 +410,7 @@ const scoreScreen = ({ navigation, route }) => {
                 ยกเลิก
               </Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity
+            <TouchableOpacity
               disabled={adsTime > adsWaitingTime || !adsTimeStamp ? false : true}
               style={{ alignItems: 'center' }}
               onPress={() => show()}>
@@ -414,7 +425,7 @@ const scoreScreen = ({ navigation, route }) => {
                     : 'ดูโฆษณาได้ใน ' + (adsWaitingTime - adsTime) + ' วิ'
                 }
               </Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -451,7 +462,7 @@ const scoreScreen = ({ navigation, route }) => {
                 ยกเลิก
               </Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity
+            <TouchableOpacity
               disabled={adsTime > adsWaitingTime || !adsTimeStamp ? false : true}
               style={{ alignItems: 'center' }}
               onPress={() => show()}>
@@ -466,7 +477,7 @@ const scoreScreen = ({ navigation, route }) => {
                     : 'ดูโฆษณาได้ใน ' + (adsWaitingTime - adsTime) + ' วิ'
                 }
               </Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -827,14 +838,14 @@ const scoreScreen = ({ navigation, route }) => {
                       จำนวนสิทธิ์ดูเฉลย: {privilege}
                     </Text>
                   </View>
-                  {/* <TouchableOpacity
+                  <TouchableOpacity
                     style={pageStyle.seePrivilegeBtn}
                     onPress={() => showRewardAds()}>
                     <AdvertIcon width={26} height={26} />
                     <Text style={[styles.textLight18, { textAlignVertical: 'center', marginLeft: 10, color: '#ffffff' }]}>
                       ดูโฆษณาเพื่อรับสิทธิ์ดูเฉลย
                     </Text>
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
                   {showDetailScore ? (
                     <View style={pageStyle.BtnSection}>
                       <TouchableOpacity

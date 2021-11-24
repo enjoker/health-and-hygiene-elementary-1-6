@@ -5,7 +5,8 @@ import {
   ImageBackground,
   TouchableOpacity,
   SafeAreaView,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/style';
@@ -86,6 +87,16 @@ const advertScreen = ({ route }) => {
   useEffect(() => {
     if (adLoadError) {
       console.error(adLoadError);
+      Alert.alert(
+        "แจ้งเตือน",
+        "ไม่สามารถโหลดโฆษณาได้ในขณะนี้",
+        [
+          {
+            text: "ตกลง",
+            onPress: () => setprivilegeVisible(false),
+          },
+        ]
+      )
     }
   }, [adLoadError]);
 
@@ -198,7 +209,7 @@ const advertScreen = ({ route }) => {
             <View style={{ margin: 5 }}>
               <Text style={[styles.textMedium40, { textAlign: 'center', color: '#333333' }]}>{privilege}</Text>
             </View>
-            {/* <TouchableOpacity
+            <TouchableOpacity
               onPress={() => showRewardAds()}
               style={[
                 {
@@ -215,7 +226,7 @@ const advertScreen = ({ route }) => {
                   ดูโฆษณาเพื่อรับสิทธิ์เพิ่ม
                 </Text>
               </View>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => register()}
               style={{
                 alignItems: 'center',

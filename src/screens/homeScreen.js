@@ -77,6 +77,16 @@ const homeScreen = ({ navigation }) => {
   useEffect(() => {
     if (adLoadError) {
       console.error(adLoadError);
+      Alert.alert(
+        "แจ้งเตือน",
+        "ไม่สามารถโหลดโฆษณาได้ในขณะนี้",
+        [
+          {
+            text: "ตกลง",
+            onPress: () => setprivilegeVisible(false),
+          },
+        ]
+      )
     }
   }, [adLoadError]);
 
@@ -221,14 +231,14 @@ const homeScreen = ({ navigation }) => {
                   กลับมาหน้าหลักนี้โดยการกดรูปบ้าน {'\n'}
                   <HomeIcon width={26} height={26} /> ด้านบนขวาของแต่ละหน้า
                 </Text>
-                {/* <TouchableOpacity
+                <TouchableOpacity
                   style={pageStyle.privilegeModal}
                   onPress={() => showRewardAds()}>
                   <AdvertIcon width={26} height={26} />
                   <Text style={[styles.textLight18, { textAlignVertical: 'center', marginLeft: 10, color: '#ffffff' }]}>
                     ดูโฆษณาเพื่อรับสิทธิ์ดูเฉลย
                   </Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
                 <AllDownload />
               </View>
               <Modal isVisible={privilegeVisible && adLoaded}>

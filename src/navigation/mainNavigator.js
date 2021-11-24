@@ -5,10 +5,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useDispatch, useSelector} from 'react-redux';
 import { Image } from 'react-native-elements';
 import styles from '../styles/style';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as userActions from '../store/actions/user';
@@ -32,60 +28,11 @@ import rankingScreen from '../screens/rankingScreen';
 import advertScreen from '../screens/advertScreen';
 import AllAppScreen from '../screens/allAppScreen';
 
-// import {useRewardedAd} from '@react-native-admob/admob';
-
-const hookOptions = {
-  loadOnDismissed: true,
-  requestOptions: {
-    requestNonPersonalizedAdsOnly: true,
-  },
-};
-
 const Navigator = () => {
   const dispatch = useDispatch();
   const checkUser = useSelector(state => state.user.userName);
   const loadingUser = useSelector(state => state.user.loadingUser);
   const Stack = createNativeStackNavigator();
-  // const [ModalVisible, setModalVisible] = useState(false);
-  // const [privilege, setprivilege] = useState();
-  // const {adLoadError, adLoaded, reward, show} = useRewardedAd(
-  //   'ca-app-pub-3940256099942544/5224354917',
-  //   hookOptions,
-  // );
-  // useEffect(() => {
-  //   if (adLoadError) {
-  //     console.error(adLoadError);
-  //   }
-  // }, [adLoadError]);
-
-  // useEffect(() => {
-  //   if (reward) {
-  //     console.log(`Reward Earned: ${reward.type}`);
-  //     savePrivilege();
-  //   }
-  // }, [reward]);
-
-  // const savePrivilege = async () => {
-  //   let sumPrivilege;
-  //   let test;
-  //   sumPrivilege = parseInt(privilege) + 2;
-  //   test = sumPrivilege.toString();
-  //   setprivilege(test);
-  //   await AsyncStorage.setItem('privilege', privilege);
-  // };
-  // useEffect(() => {
-  //   const getPrivilege = async () => {
-  //     try {
-  //       const currentPrivilege = await AsyncStorage.getItem('privilege');
-  //       setprivilege(currentPrivilege);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getPrivilege();
-  // }, []);
-  // console.log(privilege);
-  // useEffect(() => {}, [privilege]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -240,62 +187,5 @@ const Navigator = () => {
     </NavigationContainer>
   );
 };
-const pageStyle = StyleSheet.create({
-  trueColor: {
-    color: '#00962A',
-  },
-  falseColor: {
-    color: '#FF4E4E',
-  },
-  timeOutColor: {
-    color: '#888',
-  },
-  yellowBox: {
-    padding: 5,
-    marginHorizontal: 5,
-    width: wp('17%'),
-    textAlign: 'center',
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: '#000000',
-    backgroundColor: '#FFD84E',
-  },
-  closeModal: {
-    padding: 5,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: 'rgba(0, 0, 0, 0.25)',
-    backgroundColor: '#fff',
-    width: 100,
-    textAlign: 'center',
-  },
-  correctAnswer: {
-    marginRight: 10,
-    fontWeight: 'bold',
-    color: '#0036F3',
-  },
-  overTimeLeft: {
-    backgroundColor: '#fff',
-    borderColor: '#D7B641',
-    color: '#D7B641',
-    borderRadius: 10,
-    borderWidth: 1,
-    padding: 10,
-    width: 100,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
-  overTimeRight: {
-    backgroundColor: '#D7B641',
-    borderColor: '#FFffff',
-    color: '#fff',
-    borderRadius: 10,
-    borderWidth: 1,
-    padding: 10,
-    flex: 1,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
-});
 
 export default Navigator;
